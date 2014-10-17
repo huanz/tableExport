@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>table export</title>
+</head>
+<body>
+	<table id="table1">
+		<tbody>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+		</tbody>
+	</table>
+	<table id="table2">
+		<thead>
+			<tr>
+				<td>标题一</td>
+				<td>标题二</td>
+				<td>标题三</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+			<tr>
+				<td>文字</td>
+				<td>咨询</td>
+				<td>测试</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<a id="json" href="javascript:;">导出json</a>
+		<a href="">导出txt</a>
+		<a href="">导出csv</a>
+		<a href="">导出excel</a>
+		<a id="doc" href="">导出word</a>
+	</div>
+	<script src="Blob.js"></script>
+	<script src="FileSaver.js"></script>
+	<script src="tableExport.js"></script>
+	<script>
+	function addEventListener(el, eventName, handler) {
+	  if (el.addEventListener) {
+	    el.addEventListener(eventName, handler);
+	  } else {
+	    el.attachEvent('on' + eventName, function(){
+	      handler.call(el);
+	    });
+	  }
+}
+	var achor = document.getElementById('doc');
+	addEventListener(achor, 'click', function(){
+		tableExport('table1', '测试测试', 'doc');
+	});
+	</script>
+</body>
+</html>
