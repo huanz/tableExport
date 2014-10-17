@@ -49,61 +49,58 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>文字</td>
+				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
 				<td>测试</td>
 			</tr>
 			<tr>
-				<td>文字</td>
+				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
 				<td>测试</td>
 			</tr>
 			<tr>
-				<td>文字</td>
+				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
 				<td>测试</td>
 			</tr>
 			<tr>
-				<td>文字</td>
+				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
 				<td>测试</td>
 			</tr>
 			<tr>
-				<td>文字</td>
+				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
 				<td>测试</td>
 			</tr>
 			<tr>
-				<td>文字</td>
+				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
 				<td>测试</td>
 			</tr>
 		</tbody>
 	</table>
-	<div>
-		<a id="json" href="javascript:;">导出json</a>
-		<a href="">导出txt</a>
-		<a href="">导出csv</a>
-		<a href="">导出excel</a>
-		<a id="doc" href="">导出word</a>
+	<div id="export">
+		<a data-type="json" href="javascript:;">导出json</a>
+		<a data-type="txt" href="javascript:;">导出txt</a>
+		<a data-type="csv" href="javascript:;">导出csv</a>
+		<a data-type="xls" href="javascript:;">导出excel</a>
+		<a data-type="doc" href="javascript:;">导出word</a>
 	</div>
 	<script src="Blob.js"></script>
 	<script src="FileSaver.js"></script>
 	<script src="tableExport.js"></script>
 	<script>
-	function addEventListener(el, eventName, handler) {
-	  if (el.addEventListener) {
-	    el.addEventListener(eventName, handler);
-	  } else {
-	    el.attachEvent('on' + eventName, function(){
-	      handler.call(el);
-	    });
-	  }
-}
-	var achor = document.getElementById('doc');
-	addEventListener(achor, 'click', function(){
-		tableExport('table1', '测试测试', 'doc');
-	});
+
+	var $exportLink = document.getElementById('export');
+	$exportLink.addEventListener('click', function(e){
+		e.preventDefault();
+		if(e.target.nodeName === "A"){
+			tableExport('table2', '测试测试', e.target.getAttribute('data-type'));
+		}
+		
+	}, false);
+
 	</script>
 </body>
 </html>

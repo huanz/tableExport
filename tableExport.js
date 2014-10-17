@@ -88,20 +88,14 @@
 
 	    var saveData = function(data){
 	    	var BB = get_blob();
-	        saveAs(
-				  new BB(
-					  [data]
-					, {type: uri[type]}
-				)
-				, filename + "."+type
-			);
+	        saveAs(new BB([data], {type: uri[type]}), filename + "."+type);
 	    };
 
 		var toCSV = function(){
 			var data = "\ufeff";
 			for (var i = 0, row; row = table.rows[i]; i++) {
 	            for (var j = 0, col; col = row.cells[j]; j++) {
-	                data = data + (j ? ',' : '') + fixCSVField(col.innerHTML);
+	                data = data + (j ? ',' : '') + fixCSVField(getText(col));
 	            }
 	            data = data + "\r\n";
 	        }
@@ -165,7 +159,9 @@
 			txt: toCSV,
 			csv: toCSV,
 			doc: toOffice,
-			xls: toOffice
+			docx: toOffice,
+			xls: toOffice,
+			xlsx: toOffice
 		};
 
 		typeMap[type]();
