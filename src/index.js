@@ -1,4 +1,4 @@
-var saveAs = require('./saveAs');
+var saveAs = require('FileSaver.js/FileSaver').saveAs;
 var toCsv = require('./csv');
 var toJSON = require('./json');
 var toOffice = require('./office');
@@ -24,12 +24,12 @@ module.exports = global.tableExport = function (tableId, filename, type) {
         doc: toOffice,
         xls: toOffice
     };
-    var data = typeMap[type](table, charset, type);
-    if (data) {
+    try {
+        var data = typeMap[type](table, charset, type);
         saveAs(new Blob([data], {
             type: uri[type]
         }), filename + '.' + type);
-    } else {
+    } catch (e) {
         throw new Error('the supported types are: json, txt, csv, doc, xls');
     }
 };

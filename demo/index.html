@@ -87,9 +87,7 @@
 		<a data-type="xls" href="javascript:;">导出excel</a>
 		<a data-type="doc" href="javascript:;">导出word</a>
 	</div>
-	<script src="Blob.js"></script>
-	<script src="FileSaver.js"></script>
-	<script src="tableExport.js"></script>
+	<script src="../dist/tableExport.js"></script>
 	<script>
 
 	var $exportLink = document.getElementById('export');
@@ -98,9 +96,7 @@
 		if(e.target.nodeName === "A"){
 			tableExport('table2', '测试测试', e.target.getAttribute('data-type'));
 		}
-		
 	}, false);
-
 	</script>
 </body>
 </html>

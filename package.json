@@ -4,7 +4,9 @@
   "description": "table export",
   "main": "src/index.js",
   "scripts": {
-    "build": "browserify ./src/index.js > ./dist/tableExport.js",
+    "install": "napa eligrey/FileSaver.js",
+    "dev": "webpack --watch",
+    "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,6 @@
   },
   "homepage": "https://github.com/huanz/tableExport#readme",
   "devDependencies": {
-    "browserify": "^13.0.0"
+    "napa": "^2.3.0"
   }
 }
