@@ -1,9 +1,9 @@
 var utils = require('./utils');
 module.exports = function (table, charset, type) {
-    var tmpl = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:' + type + '" xmlns="http://www.w3.org/TR/REC-html40">';
-    tmpl += '<head><meta charset="' + charset + '" /><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>';
-    tmpl += '表格1</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->';
-    tmpl += '</head><body><table>{{table}}</table></body></html>';
+    var tpl = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:{{type}}" xmlns="http://www.w3.org/TR/REC-html40">';
+    tpl += '<head><meta charset="{{charset}}" /><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>';
+    tpl += '表格1</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->';
+    tpl += '</head><body><table>{{table}}</table></body></html>';
 
     var office = '';
     var maph = [
@@ -27,5 +27,9 @@ module.exports = function (table, charset, type) {
         office += maph[flag][1];
         flag++;
     }
-    return tmpl.replace('{{table}}', office);
+    return utils.template(tpl, {
+        charset: charset,
+        type: type,
+        table: office
+    });
 }

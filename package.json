@@ -4,7 +4,7 @@
   "description": "table export",
   "main": "src/index.js",
   "scripts": {
-    "install": "napa eligrey/FileSaver.js",
+    "install": "napa eligrey/FileSaver.js blueimp/JavaScript-Canvas-to-Blob",
     "dev": "webpack --watch",
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"

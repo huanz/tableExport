@@ -2,6 +2,7 @@ var saveAs = require('FileSaver.js/FileSaver').saveAs;
 var toCsv = require('./csv');
 var toJSON = require('./json');
 var toOffice = require('./office');
+var toImage = require('./image');
 
 module.exports = global.tableExport = function (tableId, filename, type) {
     var doc = document;
@@ -24,12 +25,16 @@ module.exports = global.tableExport = function (tableId, filename, type) {
         doc: toOffice,
         xls: toOffice
     };
-    try {
-        var data = typeMap[type](table, charset, type);
-        saveAs(new Blob([data], {
-            type: uri[type]
-        }), filename + '.' + type);
-    } catch (e) {
-        throw new Error('the supported types are: json, txt, csv, doc, xls');
-    }
+    //try {
+        if (type === 'image') {
+            toImage(table, filename);
+        } else {
+            var data = typeMap[type](table, charset, type);
+            saveAs(new Blob([data], {
+                type: uri[type]
+            }), filename + '.' + type);
+        }
+    // } catch (e) {
+    //     throw new Error('the supported types are: json, txt, csv, doc, xls, image');
+    // }
 };
