@@ -25,7 +25,7 @@ module.exports = global.tableExport = function (tableId, filename, type) {
         doc: toOffice,
         xls: toOffice
     };
-    //try {
+    try {
         if (type === 'image') {
             toImage(table, filename);
         } else {
@@ -34,7 +34,7 @@ module.exports = global.tableExport = function (tableId, filename, type) {
                 type: uri[type]
             }), filename + '.' + type);
         }
-    // } catch (e) {
-    //     throw new Error('the supported types are: json, txt, csv, doc, xls, image');
-    // }
+    } catch (e) {
+        throw new Error('the supported types are: json, txt, csv, doc, xls, image');
+    }
 };
