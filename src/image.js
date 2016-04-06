@@ -24,7 +24,11 @@ var renderSvg = function (svg, callback) {
     };
     img.crossOrigin = 'anonymous';
     img.src = url;
-}
+};
+
+var table2canvas = function (canvas, table) {
+    
+};
 
 module.exports = function (table, filename) {
     var width = table.offsetWidth;

@@ -27,4 +27,5 @@
 	}, false);
 
 
-想用的可以下载下来根据自己的需要修改。
+
+http://jsfiddle.net/christopheviau/v6VMf/
