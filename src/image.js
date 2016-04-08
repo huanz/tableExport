@@ -27,22 +27,20 @@ var renderSvg = function (svg, callback) {
 };
 
 var table2canvas = function (canvas, table) {
-    
+
 };
 
 module.exports = function (table, filename) {
     var width = table.offsetWidth;
-    var height = table.offsetHeight;
+    var height = table.offsetHeight + 8;
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     canvas.width = width;
     canvas.height = height;
-
     var parser = new DOMParser();
-    var doc = parser.parseFromString(table.innerHTML, 'text/html');
+    var doc = parser.parseFromString(table.outerHTML, 'text/html');
     var xhtml = (new XMLSerializer).serializeToString(doc);
-
-    var tpl = '<svg xmlns="http://www.w3.org/2000/svg" width="{{width}}" height="{{height}}"><foreignObject width="100%" height="100%">{{xhtml}}</foreignObject></svg>';
+    var tpl = '<svg xmlns="http://www.w3.org/2000/svg" width="{{width}}" height="{{height}}"><style scoped="">html::-webkit-scrollbar { display: none; }</style><foreignObject x="0" y="0" width="{{width}}" height="{{height}}" style="float: left;" externalResourcesRequired="true">{{xhtml}}</foreignObject></svg>';
     var svg = utils.template(tpl, {
         width: width,
         height: width,
