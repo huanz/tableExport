@@ -4,7 +4,7 @@
   "description": "table export",
   "main": "src/index.js",
   "scripts": {
-    "install": "napa eligrey/FileSaver.js blueimp/JavaScript-Canvas-to-Blob MrRio/jsPDF",
+    "install": "napa eligrey/FileSaver.js blueimp/JavaScript-Canvas-to-Blob",
     "dev": "webpack --watch",
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/huanz/tableExport#readme",
   "devDependencies": {
-    "napa": "^2.3.0"
+    "napa": "^2.3.0",
+    "webpack": "^1.12.14"
   }
 }

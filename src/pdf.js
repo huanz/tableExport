@@ -1,8 +1,8 @@
 var utils = require('./utils');
-var jsPDF = require('jsPDF');
+var jsPDF = require('./jspdf');
 
 module.exports = function (table) {
-    var pdf = new jsPDF('p','pt', 'a4', true);
+    var pdf = new jsPDF('p','pt', 'a4', false);
     var startColPosition = 20;
     var startRowPosition = 20;
     var colPosition = 0;
@@ -18,8 +18,8 @@ module.exports = function (table) {
         rowPosition = startRowPosition + ((i + 1) * 10) - ((page -1) * 280);
         for (var j = 0, col; col = row.cells[j]; j++) {
             colPosition = startColPosition + (j * 50);
-            pdf.text(colPosition, rowPosition, utils.getText(col));
+            pdf.text(utils.getText(col), colPosition, rowPosition);
         }
     }
-    return pdf.output('datauristring');
+    return pdf.output('arraybuffer');
 }

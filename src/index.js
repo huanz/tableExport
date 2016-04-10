@@ -31,13 +31,9 @@ module.exports = global.tableExport = function (tableId, filename, type) {
     if (type === 'image') {
         toImage(table, filename);
     } else {
-        try {
-            var data = typeMap[type](table, charset, type);
-            saveAs(new Blob([data], {
-                type: uri[type]
-            }), filename + '.' + type);
-        } catch (e) {
-            throw new Error('the supported types are: json, txt, csv, xml, doc, xls, image');
-        }
+        var data = typeMap[type](table, charset, type);
+        saveAs(new Blob([data], {
+            type: uri[type]
+        }), filename + '.' + type);
     }
 };
