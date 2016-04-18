@@ -4,7 +4,7 @@ var toJSON = require('./json');
 var toXml = require('./xml');
 var toOffice = require('./office');
 var toImage = require('./image');
-
+var toPDF = require('./pdf');
 module.exports = global.tableExport = function (tableId, filename, type) {
     var doc = document;
     var table = doc.getElementById(tableId);
@@ -17,8 +17,7 @@ module.exports = global.tableExport = function (tableId, filename, type) {
         doc: 'application/msword',
         xls: 'application/vnd.ms-excel',
         docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        pdf: 'application/pdf'
+        xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     };
     var typeMap = {
         json: toJSON,
@@ -26,10 +25,13 @@ module.exports = global.tableExport = function (tableId, filename, type) {
         xml: toXml,
         csv: toCsv,
         doc: toOffice,
-        xls: toOffice
+        xls: toOffice,
+        pdf: toPDF
     };
     if (type === 'image') {
         toImage(table, filename);
+    } else if (type === 'pdf') {
+        toPDF(table, filename);
     } else {
         var data = typeMap[type](table, charset, type);
         saveAs(new Blob([data], {
