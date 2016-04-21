@@ -1,7 +1,7 @@
 {
   "name": "table-export",
   "version": "1.0.0",
-  "description": "table export",
+  "description": "table export, support json、csv、txt、xml、word、excel、image、pdf",
   "main": "src/index.js",
   "scripts": {
     "install": "napa eligrey/FileSaver.js blueimp/JavaScript-Canvas-to-Blob",
@@ -14,7 +14,18 @@
     "url": "git+https://github.com/huanz/tableExport.git"
   },
   "keywords": [
-    "export"
+    "export",
+    "table",
+    "image",
+    "pdf",
+    "word",
+    "excel",
+    "doc",
+    "xls",
+    "csv",
+    "json",
+    "xml",
+    "txt"
   ],
   "author": "bukas",
   "license": "ISC",

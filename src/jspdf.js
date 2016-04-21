@@ -163,8 +163,7 @@ var jsPDF = (function (global) {
         format = format || 'a4';
         orientation = ('' + (orientation || 'P')).toLowerCase();
 
-        var format_as_string = ('' + format).toLowerCase(),
-            compress = !!compressPdf && typeof Uint8Array === 'function',
+        var compress = !!compressPdf && typeof Uint8Array === 'function',
             textColor = options.textColor || '0 g',
             drawColor = options.drawColor || '0 G',
             activeFontSize = options.fontSize || 16,
@@ -1477,7 +1476,6 @@ var jsPDF = (function (global) {
          * @name rect
          */
         API.rect = function (x, y, w, h, style) {
-            var op = getStyle(style);
             out([
                 f2(x * k),
                 f2((pageHeight - y) * k),
