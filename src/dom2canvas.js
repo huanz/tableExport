@@ -1,10 +1,10 @@
 var utils = require('./utils');
 
 var rgb2hex = function (rgb) {
-    if (rgb.search('rgb') === -1) {
-        return rgb;
-    } else if (rgb === 'rgba(0, 0, 0, 0)') {
+    if (rgb.toLowerCase() === 'transparent' || rgb === 'rgba(0, 0, 0, 0)') {
         return '#fff';
+    } else if (rgb.search('rgb') === -1) {
+        return rgb;
     } else {
         rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
         function hex(x) {
@@ -16,7 +16,7 @@ var rgb2hex = function (rgb) {
 
 var renderSvg = function (svg, callback) {
     var img = new Image();
-    var url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    var url = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
     var resetEventHandlers = function () {
         img.onload = null;
         img.onerror = null;
@@ -25,7 +25,7 @@ var renderSvg = function (svg, callback) {
         resetEventHandlers();
         callback(img);
     };
-    img.crossOrigin = 'anonymous';
+    // img.crossOrigin = 'anonymous';
     img.src = url;
 };
 

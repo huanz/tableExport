@@ -13,7 +13,6 @@ module.exports = function (table, filename) {
         saveAs(pdf.output('blob'), filename + '.pdf');
     };
     pdf.setFontSize(14);
-
     if (/[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/gi.test(utils.getText(table))) {
         pdf.addDOM(table, startRowPosition, startColPosition, function () {
             save(pdf);

@@ -2882,10 +2882,8 @@ var jsPDF = (function (global) {
                 callback(w,h,alias,args);
             }
         }.bind(this);
-
         dom2canvas(element, {format: 'jpg'}, function (canvas) {
             options.onrendered(canvas);
         });
     };
 })(jsPDF.API);
-
