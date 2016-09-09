@@ -1,5 +1,5 @@
-var saveAs = require('FileSaver.js/FileSaver').saveAs;
-require('JavaScript-Canvas-to-Blob');
+var saveAs = require('file-saver').saveAs;
+require('blueimp-canvas-to-blob');
 var dom2canvas = require('./dom2canvas');
 
 module.exports = function (table, filename) {

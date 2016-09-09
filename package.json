@@ -4,7 +4,6 @@
   "description": "table export, support json、csv、txt、xml、word、excel、image、pdf",
   "main": "src/index.js",
   "scripts": {
-    "install": "napa eligrey/FileSaver.js blueimp/JavaScript-Canvas-to-Blob",
     "dev": "webpack --watch",
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -34,7 +33,8 @@
   },
   "homepage": "https://github.com/huanz/tableExport#readme",
   "devDependencies": {
-    "napa": "^2.3.0",
+    "blueimp-canvas-to-blob": "^3.3.0",
+    "file-saver": "^1.3.2",
     "webpack": "^1.12.14"
   }
 }

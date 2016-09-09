@@ -59,7 +59,7 @@ module.exports = function (tableId, filename, type) {
         } else {
         /*image-pdf-wrap*/
             var data = typeFunc(table, charset, type);
-            require('FileSaver.js/FileSaver').saveAs(new Blob([data], {
+            require('file-saver').saveAs(new Blob([data], {
                 type: uri[type]
             }), filename + '.' + type);
         /*image-pdf-wrap*/

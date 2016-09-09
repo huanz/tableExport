@@ -1,4 +1,4 @@
-var saveAs = require('FileSaver.js/FileSaver').saveAs;
+var saveAs = require('file-saver').saveAs;
 var utils = require('./utils');
 var jsPDF = require('./jspdf');
 
