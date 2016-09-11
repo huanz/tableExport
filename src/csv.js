@@ -1,19 +1,16 @@
 var utils = require('./utils');
-
 var fixCSVField = function(value) {
-    var fixedValue = value;
     var addQuotes = (value.indexOf(',') !== -1) || (value.indexOf('\r') !== -1) || (value.indexOf('\n') !== -1);
     var replaceDoubleQuotes = (value.indexOf('"') !== -1);
 
     if (replaceDoubleQuotes) {
-        fixedValue = fixedValue.replace(/"/g, '""');
+        value = value.replace(/"/g, '""');
     }
     if (addQuotes || replaceDoubleQuotes) {
-        fixedValue = '"' + fixedValue + '"';
+        value = '"' + value + '"';
     }
-    return fixedValue;
+    return '\t' + value;
 };
-
 
 module.exports = function (table) {
     var data = '\ufeff';

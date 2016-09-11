@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
 	<meta charset="UTF-8">
 	<title>table export</title>
 </head>
+
 <body>
 	<table id="table1">
 		<tbody>
@@ -56,7 +58,7 @@
 			<tr>
 				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
 				<td>咨询</td>
-				<td>测试</td>
+				<td>121223243444444466778676555454434</td>
 			</tr>
 			<tr>
 				<td><a href="http://w3cboy.com" target="_blank">文字</a></td>
@@ -84,7 +86,7 @@
 		<a data-type="json" href="javascript:;">导出json</a>
 		<a data-type="txt" href="javascript:;">导出txt</a>
 		<a data-type="csv" href="javascript:;">导出csv</a>
-        <a data-type="xml" href="javascript:;">导出xml</a>
+		<a data-type="xml" href="javascript:;">导出xml</a>
 		<a data-type="xls" href="javascript:;">导出excel</a>
 		<a data-type="doc" href="javascript:;">导出word</a>
 		<a data-type="image" href="javascript:;">导出图片</a>
@@ -92,14 +94,14 @@
 	</div>
 	<script src="../dist/tableExport.js"></script>
 	<script>
-
-	var $exportLink = document.getElementById('export');
-	$exportLink.addEventListener('click', function(e){
-		e.preventDefault();
-		if(e.target.nodeName === "A"){
-			tableExport('table2', 'test', e.target.getAttribute('data-type'));
-		}
-	}, false);
+		var $exportLink = document.getElementById('export');
+		$exportLink.addEventListener('click', function(e) {
+			e.preventDefault();
+			if (e.target.nodeName === "A") {
+				tableExport('table2', 'test', e.target.getAttribute('data-type'));
+			}
+		}, false);
 	</script>
 </body>
+
 </html>

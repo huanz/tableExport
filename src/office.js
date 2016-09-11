@@ -13,7 +13,7 @@ module.exports = function (table, charset, type) {
     ];
     var mapb = [
         ['<th>', '</th>'],
-        ['<td>', '</td>']
+        ['<td style="vnd.ms-excel.numberformat:@">', '</td>']
     ];
     var flag = +!table.tHead;
     var com = 1 - flag;
