@@ -1,6 +1,6 @@
 # tableExport.js #
 
-`table`导出文件，支持导出`json`、`txt`、`csv`、`xml`、`doc`、`xsl`、`image`、 `pdf`。
+`table`导出文件，支持导出`json`、`txt`、`csv`、`xml`、`doc`、`xls`、`image`、 `pdf`。
 
 # usage #
 
