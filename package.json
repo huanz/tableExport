@@ -2,7 +2,7 @@
   "name": "table-export",
   "version": "1.0.0",
   "description": "table export, support json、csv、txt、xml、word、excel、image、pdf",
-  "main": "src/index.js",
+  "main": "dist/tableExport.js",
   "scripts": {
     "dev": "webpack --watch",
     "build": "webpack -p",
