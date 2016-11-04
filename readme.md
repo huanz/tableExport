@@ -19,6 +19,10 @@
 
 ## usage
 
+```shell
+npm i table-export --save
+```
+
 ```javascript
 var tableExport = require('table-export');
 // dom id, filename, type: json, txt, csv, xml, doc, xsl, image, pdf

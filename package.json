@@ -1,6 +1,6 @@
 {
   "name": "table-export",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "table export, support json、csv、txt、xml、word、excel、image、pdf",
   "main": "dist/tableExport.js",
   "scripts": {
@@ -33,8 +33,8 @@
   },
   "homepage": "https://github.com/huanz/tableExport#readme",
   "devDependencies": {
-    "blueimp-canvas-to-blob": "^3.3.0",
-    "file-saver": "^1.3.2",
-    "webpack": "^1.12.14"
+    "blueimp-canvas-to-blob": "^3.5.0",
+    "file-saver": "^1.3.3",
+    "webpack": "^1.13.3"
   }
 }

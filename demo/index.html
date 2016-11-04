@@ -41,7 +41,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<table id="table2" width="200px">
+	<table id="table2" width="500px">
 		<thead>
 			<tr>
 				<th>标题一</th>
@@ -82,6 +82,22 @@
 			</tr>
 		</tbody>
 	</table>
+    <table id="table3" width="500px">
+		<thead>
+			<tr>
+				<th>author</th>
+				<th>keywords</th>
+				<th>description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="http://w3cboy.com" target="_blank">bukas</a></td>
+				<td>javascript</td>
+				<td>hello world</td>			
+			</tr>
+		</tbody>
+	</table>
 	<div id="export">
 		<a data-type="json" href="javascript:;">导出json</a>
 		<a data-type="txt" href="javascript:;">导出txt</a>
@@ -98,7 +114,7 @@
 		$exportLink.addEventListener('click', function(e) {
 			e.preventDefault();
 			if (e.target.nodeName === "A") {
-				tableExport('table2', 'test', e.target.getAttribute('data-type'));
+			    tableExport('table2', 'test', e.target.getAttribute('data-type'));
 			}
 		}, false);
 	</script>
