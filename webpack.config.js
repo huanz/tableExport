@@ -1,4 +1,6 @@
+var path = require('path');
 var fs = require('fs');
+var webpack = require('webpack');
 var src = './src/index.js';
 var md = ['json', 'txt', 'csv', 'xml', 'doc', 'xls', 'image', 'pdf'];
 var modules = (process.env['MODULES'] || '').split(' ');
@@ -15,7 +17,7 @@ if (modules[0]) {
                 nopdf = true;
             }
             return true;
-        }else {
+        } else {
             return false;
         }
     });
@@ -46,7 +48,12 @@ module.exports = {
     output: {
         libraryTarget: 'umd',
         library: 'tableExport',
-        path: './dist',
+        path: path.join(__dirname, 'dist'),
         filename: 'tableExport.js'
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false
+        })
+    ]
 };
