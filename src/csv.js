@@ -1,15 +1,6 @@
 var utils = require('./utils');
-var fixCSVField = function(value) {
-    var addQuotes = (value.indexOf(',') !== -1) || (value.indexOf('\r') !== -1) || (value.indexOf('\n') !== -1);
-    var replaceDoubleQuotes = (value.indexOf('"') !== -1);
-
-    if (replaceDoubleQuotes) {
-        value = value.replace(/"/g, '""');
-    }
-    if (addQuotes || replaceDoubleQuotes) {
-        value = '"' + value + '"';
-    }
-    return '\t' + value;
+var fixCSVField = function (value) {
+    return '\t"' + value.replace(/"/g, '""') + '"';
 };
 
 module.exports = function (table) {

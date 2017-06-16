@@ -4,7 +4,7 @@ exports.getText = function (el) {
 };
 
 exports.template = function (s, c) {
-    return s.replace(/{{(\w+)}}/g, function(m, p) {
+    return s.replace(/{{(\w+)}}/g, function (m, p) {
         return c[p];
     });
 };

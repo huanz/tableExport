@@ -20,48 +20,51 @@ require('jspdf/plugins/addimage');
     jsPDFAPI.addDOM = function (element, x, y, options, callback) {
         var dom2canvas = require('./dom2canvas');
 
-        if(typeof x !== 'number') {
+        if (typeof x !== 'number') {
             options = x;
             callback = y;
         }
 
-        if(typeof options === 'function') {
+        if (typeof options === 'function') {
             callback = options;
             options = null;
         }
 
-        var I = this.internal, K = I.scaleFactor, W = I.pageSize.width, H = I.pageSize.height;
+        var I = this.internal,
+            K = I.scaleFactor,
+            W = I.pageSize.width,
+            H = I.pageSize.height;
 
         options = options || {};
-        options.onrendered = function(obj) {
+        options.onrendered = function (obj) {
             x = parseInt(x) || 0;
             y = parseInt(y) || 0;
             var dim = options.dim || {};
             var h = dim.h || 0;
-            var w = dim.w || Math.min(W,obj.width/K) - x;
+            var w = dim.w || Math.min(W, obj.width / K) - x;
 
             var format = 'JPEG';
-            if(options.format)
+            if (options.format)
                 format = options.format;
 
-            if(obj.height > H && options.pagesplit) {
-                var crop = function() {
+            if (obj.height > H && options.pagesplit) {
+                var crop = function () {
                     var cy = 0;
-                    while(1) {
+                    while (1) {
                         var canvas = document.createElement('canvas');
-                        canvas.width = Math.min(W*K,obj.width);
-                        canvas.height = Math.min(H*K,obj.height-cy);
+                        canvas.width = Math.min(W * K, obj.width);
+                        canvas.height = Math.min(H * K, obj.height - cy);
                         var ctx = canvas.getContext('2d');
-                        ctx.drawImage(obj,0,cy,obj.width,canvas.height,0,0,canvas.width,canvas.height);
-                        var args = [canvas, x,cy?0:y,canvas.width/K,canvas.height/K, format,null,'SLOW'];
+                        ctx.drawImage(obj, 0, cy, obj.width, canvas.height, 0, 0, canvas.width, canvas.height);
+                        var args = [canvas, x, cy ? 0 : y, canvas.width / K, canvas.height / K, format, null, 'SLOW'];
                         this.addImage.apply(this, args);
                         cy += canvas.height;
-                        if(cy >= obj.height) break;
+                        if (cy >= obj.height) break;
                         this.addPage();
                     }
-                    callback(w,cy,null,args);
+                    callback(w, cy, null, args);
                 }.bind(this);
-                if(obj.nodeName === 'CANVAS') {
+                if (obj.nodeName === 'CANVAS') {
                     var img = new Image();
                     img.onload = crop;
                     img.src = obj.toDataURL('image/png');
@@ -71,14 +74,16 @@ require('jspdf/plugins/addimage');
                 }
             } else {
                 var alias = Math.random().toString(35);
-                var args = [obj, x,y,w,h, format,alias,'SLOW'];
+                var args = [obj, x, y, w, h, format, alias, 'SLOW'];
 
                 this.addImage.apply(this, args);
 
-                callback(w,h,alias,args);
+                callback(w, h, alias, args);
             }
         }.bind(this);
-        dom2canvas(element, {format: 'jpg'}, function (canvas) {
+        dom2canvas(element, {
+            format: 'jpg'
+        }, function (canvas) {
             options.onrendered(canvas);
         });
     };

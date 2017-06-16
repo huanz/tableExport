@@ -18,7 +18,7 @@ module.exports = function (table) {
             }
         }
     }
-    
+
     return JSON.stringify({
         header: jsonHeaderArray,
         data: jsonArray

@@ -3,68 +3,49 @@ module.exports = function (tableId, filename, type) {
     var table = doc.getElementById(tableId);
     var charset = doc.characterSet;
     var uri = {
-        /*json-wrap*/
         json: 'application/json;charset=' + charset,
-        /*json-wrap*/
-        /*txt-wrap*/
         txt: 'csv/txt;charset=' + charset,
-        /*txt-wrap*/
-        /*csv-wrap*/
         csv: 'csv/txt;charset=' + charset,
-        /*csv-wrap*/
-        /*xml-wrap*/
         xml: 'application/xml',
-        /*xml-wrap*/
-        /*doc-wrap*/
         doc: 'application/msword',
-        /*doc-wrap*/
-        /*xls-wrap*/
         xls: 'application/vnd.ms-excel',
-        /*xls-wrap*/
         docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     };
     var typeMap = {
-        /*json-wrap*/
-        json: require('./json'),
-        /*json-wrap*/
-        /*txt-wrap*/
+        /* txt:start */
         txt: require('./csv'),
-        /*txt-wrap*/
-        /*csv-wrap*/
+        /* txt:end */
+        /* csv:start */
         csv: require('./csv'),
-        /*csv-wrap*/
-        /*xml-wrap*/
+        /* csv:end */
+        /* xml:start */
         xml: require('./xml'),
-        /*xml-wrap*/
-        /*doc-wrap*/
+        /* xml:end */
+        /* doc:start */
         doc: require('./office'),
-        /*doc-wrap*/
-        /*xls-wrap*/
+        /* doc:end */
+        /* xls:start */
         xls: require('./office'),
-        /*xls-wrap*/
-        /*image-wrap*/
+        /* xls:end */
+        /* image:start */
         image: require('./image'),
-        /*image-wrap*/
-        /*pdf-wrap*/
+        /* image:end */
+        /* pdf:start */
         pdf: require('./pdf'),
-        /*pdf-wrap*/
+        /* pdf:end */
         docx: ''
     };
     var typeFunc = typeMap[type];
     if (typeof typeFunc === 'function') {
-        /*image-pdf-wrap*/
-        if (/*type-if-wrap*/type === 'image' || type === 'pdf'/*type-if-wrap*/) {
+        if (type === 'image' || type === 'pdf') {
             typeFunc(table, filename);
         } else {
-        /*image-pdf-wrap*/
             var data = typeFunc(table, charset, type);
             require('file-saver').saveAs(new Blob([data], {
                 type: uri[type]
             }), filename + '.' + type);
-        /*image-pdf-wrap*/
         }
-        /*image-pdf-wrap*/
     } else {
         throw new Error('the supported types are: json, txt, csv, xml, doc, xls, image, pdf');
     }
